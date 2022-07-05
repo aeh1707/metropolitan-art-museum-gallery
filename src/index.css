@@ -1,4 +1,40 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
-  font-family: 'Courier New', Courier, monospace;
-  background-color: brown;
+  font-family: 'Finlandica', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  width: 60vw;
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  gap: 100px;
+  margin: 0 auto;
+  align-items: center;  
+}
+
+header {
+  border-bottom: 2px solid black;
+}
+
+footer {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid black;
+}
+
+img {
+  width: 200px;
 }
