@@ -1,0 +1,88 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Finlandica', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+/* Header and Footer Styles
+************************************/
+
+ul {
+  width: 60vw;
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  gap: 100px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+header {
+  border-bottom: 2px solid black;
+}
+
+footer {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid black;
+}
+
+img {
+  width: 200px;
+}
+
+/* Home Page Styles
+************************************/
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+article {
+  width: 19vw;
+  border: 2px solid black;
+}
+
+article img {
+  width: 100%;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button {
+  background-color: white;
+  box-shadow: 5px 4px 1px 1px #000;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.card-body h2 {
+  margin: 10px 5px;
+}
