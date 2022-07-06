@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# TODO list App
+# Art Musuem App
 
 > A musuem art gallery.
 
