@@ -14,6 +14,9 @@ body {
   margin: 0;
 }
 
+/* Header and Footer Styles
+************************************/
+
 ul {
   width: 60vw;
   padding: 10px;
@@ -21,7 +24,7 @@ ul {
   display: flex;
   gap: 100px;
   margin: 0 auto;
-  align-items: center;  
+  align-items: center;
 }
 
 header {
@@ -37,4 +40,49 @@ footer {
 
 img {
   width: 200px;
+}
+
+/* Home Page Styles
+************************************/
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+article {
+  width: 19vw;
+  border: 2px solid black;
+}
+
+article img {
+  width: 100%;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button {
+  background-color: white;
+  box-shadow: 5px 4px 1px 1px #000;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.card-body h2 {
+  margin: 10px 5px;
 }
