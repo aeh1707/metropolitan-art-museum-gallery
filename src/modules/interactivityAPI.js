@@ -41,7 +41,6 @@ const getLike = async (item) => {
     },
   });
   const object = await response.json();
-  // console.log(object);
   const id = `like${item}`;
   for (let i = 0; i < object.length; i += 1) {
     if (object[i].item_id === id) {
@@ -51,4 +50,8 @@ const getLike = async (item) => {
   return 0;
 };
 
-module.exports = { getItemData, createLike, getLike };
+const countItems = (items) => items.length;
+
+module.exports = {
+  getItemData, createLike, getLike, countItems,
+};
