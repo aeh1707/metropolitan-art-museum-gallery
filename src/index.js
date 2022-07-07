@@ -1,25 +1,41 @@
 import './index.css';
 
-const { getItemData } = require('./modules/interactivityAPI.js');
+const { getItemData, createLike, getLike } = require('./modules/interactivityAPI.js');
 
 const items = [500, 501, 499, 498, 496, 1000, 1010, 1020];
 const main = document.querySelector('main');
+const likeBtns = [];
+const nLikesStat = {};
 main.innerHTML = '';
 
 for (let i = 0; i < items.length; i += 1) {
   getItemData(items[i]).then((itemData) => {
-    main.innerHTML += `
-      <article>
-        <img src="${itemData.primaryImage}" alt="">
-        <div class="card-body">
-          <div class="card-head">
-            <h2>${itemData.title}</h2>
-            <i class="fa-regular fa-heart"></i>
-          </div>
-          <div class="card-content">
-            <button type="menu">Comments</button>
-          </div>
+    const article = document.createElement('article');
+    article.innerHTML = `<img src="${itemData.primaryImage}" alt="">
+    <div class="card-body">
+      <div class="card-head">
+        <h2>${itemData.title}</h2>
+        <div class="likes">
+          <i id="like${items[i]}" class="fa-solid fa-heart"></i>
+          <div id='nLikes${items[i]}'>0</div>
         </div>
-      </article>`;
+      </div>
+      <div class="card-content">
+        <button id='comment${items[i]}' type="menu">Comments</button>
+      </div>
+    </div>`;
+    main.appendChild(article);
+    likeBtns[i] = document.querySelector(`#like${items[i]}`);
+    nLikesStat[`like${items[i]}`] = document.querySelector(`#nLikes${items[i]}`);
+    likeBtns[i].addEventListener('click', (e) => {
+      e.preventDefault();
+      createLike(items[i]);
+      getLike(items[i]).then((likes) => {
+        nLikesStat[`like${items[i]}`].textContent = likes;
+      });
+    });
+    getLike(items[i]).then((likes) => {
+      nLikesStat[`like${items[i]}`].textContent = likes;
+    });
   });
 }
