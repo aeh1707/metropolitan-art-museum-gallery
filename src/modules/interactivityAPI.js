@@ -19,4 +19,36 @@ const getItemData = async (ObjectID) => {
   return itemData;
 };
 
-module.exports = { getItemData };
+const createLike = async (item) => {
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vvWs1Ixtvq0jjWqoMEOc/likes', {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: `like${item}`,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  const object = await response.text();
+  return object;
+};
+
+const getLike = async (item) => {
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vvWs1Ixtvq0jjWqoMEOc/likes', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  const object = await response.json();
+  // console.log(object);
+  const id = `like${item}`;
+  for (let i = 0; i < object.length; i += 1) {
+    if (object[i].item_id === id) {
+      return object[i].likes;
+    }
+  }
+  return 0;
+};
+
+module.exports = { getItemData, createLike, getLike };
