@@ -1,7 +1,7 @@
 import './index.css';
 
 const {
-  getItemData, createLike, getLike, countItems,
+  getItemData, createLike, getLike, countItems, createComment, getComments,
 } = require('./modules/interactivityAPI.js');
 
 const items = [500, 501, 499, 498, 496, 1000, 1010, 1020];
@@ -11,6 +11,10 @@ const likeBtns = [];
 const commentBtns = [];
 const popups = [];
 const xBtns = [];
+const submitBtns = [];
+const inputUsers = [];
+const inputComments = [];
+const commentsContainers = [];
 const nLikesStat = {};
 const itesmsCount = countItems(items);
 const itemsCountsFiled = document.querySelector('header .items-count span');
@@ -64,26 +68,50 @@ for (let i = 0; i < items.length; i += 1) {
             </section>
             <section>
                 <h3>Comments (<span></span>)</h3>
-                <div class="comments-container">
-                    <article class="comment">comment 1</article>
-                    <article class="comment">comment 2</article>
+                <div class="comments-container${items[i]}">
+                    <article class="comment"></article>
                 </div>
                 <h3>Add a comment</h3>
                 <form action="">
-                    <input type="text" id="username" name="usernme" placeholder="Usernme" required>
-                    <textarea type="text" id="comment" name="comment" rows="4" cols="50" placeholder="Comment" required></textarea>
-                    <button type="submit">Comment</button>
+                    <input type="text" id="username${items[i]}" name="usernme" placeholder="Usernme" required>
+                    <textarea type="text" id="commentpop${items[i]}" name="comment" rows="4" cols="50" placeholder="Comment" required></textarea>
+                    <button id='submitComment${items[i]}' type="submit">Comment</button>
                 </form>
             </section>
         </article>`;
     popupsContainer.appendChild(popup);
     commentBtns[i] = document.querySelector(`#comment${items[i]}`);
+    commentsContainers[i] = document.querySelector(`.comments-container${items[i]}`);
     xBtns[i] = document.querySelector(`.fa${items[i]}`);
+    submitBtns[i] = document.querySelector(`#submitComment${items[i]}`);
+    inputUsers[i] = document.querySelector(`#username${items[i]}`);
+    inputComments[i] = document.querySelector(`#commentpop${items[i]}`);
     popups[i] = document.querySelector(`.popup${items[i]}`);
     commentBtns[i].addEventListener('click', () => {
       popups[i].classList.remove('hide');
       xBtns[i].addEventListener('click', () => {
         popups[i].classList.add('hide');
+      });
+      //
+      getComments(items[i]).then((comments) => {
+        for (let j = 0; j < comments.length; j += 1) {
+          const commentPop = comments[j];
+          const cmnt = document.createElement('article');
+          cmnt.classList.add('comment');
+          cmnt.innerHTML = `${commentPop.creationDate}, ${commentPop.username}: ${commentPop.comment}`;
+          commentsContainers[i].appendChild(cmnt);
+        }
+      });
+      //
+      submitBtns[i].addEventListener('click', (e) => {
+        e.preventDefault();
+        createComment(items[i], inputUsers[i].value, inputComments[i].value).then((comment) => {
+          const comment1 = comment;
+          const cmnt1 = document.createElement('article');
+          cmnt1.classList.add('comment');
+          cmnt1.innerHTML = `${comment1.creationDate}, ${comment1.username}: ${comment1.comment}`;
+          commentsContainers[i].appendChild(cmnt1);
+        });
       });
     });
   });
