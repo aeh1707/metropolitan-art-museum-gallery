@@ -8,7 +8,6 @@
 
 **Clone the repo into your local machine.**
 
-
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
@@ -27,6 +26,10 @@ run `npm run start`.
 - CSS
 - JavaScript
 - Webpack
+
+## Demo Video of The Website
+
+[Live Demo Video Link](https://www.loom.com/share/866a8d487f224b078c85dfaa594c6fbc)
 
 ## Live Demo
 
