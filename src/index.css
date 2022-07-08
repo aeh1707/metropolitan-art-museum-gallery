@@ -86,3 +86,71 @@ button {
 .card-body h2 {
   margin: 10px 5px;
 }
+
+/* Pop Page Styles
+************************************/
+
+article.hide {
+  display: none;
+}
+
+.popup {
+  position: absolute;
+  background: white;
+  top: 8%;
+  left: 15%;
+  right: 5%;
+  width: 70vw;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup ul {
+  flex-direction: column;
+  gap: 10px;
+  width: initial;
+  margin: initial;
+  align-items: initial;
+}
+
+.popup section {
+  width: 40vw;
+}
+
+.fa-x {
+  align-self: flex-end;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+textarea {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+form input::placeholder,
+textarea::placeholder {
+  font-family: inherit;
+}
+
+#username {
+  width: 20vw;
+}
+
+form button {
+  padding: 10px;
+}
+
+.comment {
+  border: none;
+}
+
+.popup img {
+  width: 25vw;
+}
