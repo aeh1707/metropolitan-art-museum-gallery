@@ -20,7 +20,7 @@ const getItemData = async (ObjectID) => {
 };
 
 const createLike = async (item) => {
-  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vvWs1Ixtvq0jjWqoMEOc/likes', {
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/uMLznOnNgrHL3E5Ojiko/likes', {
     method: 'POST',
     body: JSON.stringify({
       item_id: `like${item}`,
@@ -34,7 +34,7 @@ const createLike = async (item) => {
 };
 
 const getLike = async (item) => {
-  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vvWs1Ixtvq0jjWqoMEOc/likes', {
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/uMLznOnNgrHL3E5Ojiko/likes', {
     method: 'GET',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -52,6 +52,51 @@ const getLike = async (item) => {
 
 const countItems = (items) => items.length;
 
+const createComment = async (itemId, username, comment) => {
+  const date = new Date();
+  const year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let dt = date.getDate();
+
+  if (dt < 10) {
+    dt = `0${dt}`;
+  }
+
+  if (month < 10) {
+    month = `0${month}`;
+  }
+
+  const creationDate = `${year}-${month}-${dt}`;
+  const object = {
+    creationDate,
+    username,
+    comment,
+  };
+  await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/uMLznOnNgrHL3E5Ojiko/comments', {
+    method: 'POST',
+    body: JSON.stringify({
+      itemId,
+      username,
+      comment,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  return object;
+};
+
+const getComments = async (itemId) => {
+  const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/uMLznOnNgrHL3E5Ojiko/comments?item_id=${itemId}`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  const object = await response.json();
+  return object;
+};
+
 module.exports = {
-  getItemData, createLike, getLike, countItems,
+  getItemData, createLike, getLike, countItems, createComment, getComments,
 };
