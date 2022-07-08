@@ -52,7 +52,7 @@ const getLike = async (item) => {
 
 const countItems = (items) => items.length;
 
-const createComment = async (itemId, username, comment) => {
+const createComment = async (item_id, username, comment) => { // eslint-disable-line
   const date = new Date();
   const year = date.getFullYear();
   let month = date.getMonth() + 1;
@@ -75,7 +75,7 @@ const createComment = async (itemId, username, comment) => {
   await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/uMLznOnNgrHL3E5Ojiko/comments', {
     method: 'POST',
     body: JSON.stringify({
-      itemId,
+      item_id,
       username,
       comment,
     }),
@@ -83,6 +83,7 @@ const createComment = async (itemId, username, comment) => {
       'Content-type': 'application/json; charset=UTF-8',
     },
   });
+  // console.log(response.json());
   return object;
 };
 
