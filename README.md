@@ -2,7 +2,7 @@
 
 # Art Musuem App
 
-> A musuem art gallery.
+> A musuem art gallery build using HTML, CSS, JS, webpack and also by using The Metropolitan Museum of Art Open Access API.
 
 ## Getting Started
 
@@ -28,9 +28,9 @@ run `npm run start`.
 - JavaScript
 - Webpack
 
-<!-- ## Live Demo
+## Live Demo
 
-[Live Demo Link](https://aeh1707.github.io/todo-list-application/) -->
+[Live Demo Link](https://aeh1707.github.io/microverse-capstone-module-2/)
 
 ## Authors
 
@@ -58,6 +58,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
+- [The Metropolitan Museum of Art Open Access API](https://github.com/metmuseum/openaccess)
 - Hat tip to anyone whose code was used
 - Inspiration
 - etc
