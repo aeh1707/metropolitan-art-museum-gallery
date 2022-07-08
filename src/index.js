@@ -15,6 +15,7 @@ const submitBtns = [];
 const inputUsers = [];
 const inputComments = [];
 const commentsContainers = [];
+const nComments = [];
 const nLikesStat = {};
 const itesmsCount = countItems(items);
 const itemsCountsFiled = document.querySelector('header .items-count span');
@@ -67,7 +68,7 @@ for (let i = 0; i < items.length; i += 1) {
                 </ul>
             </section>
             <section>
-                <h3>Comments (<span></span>)</h3>
+                <h3>Comments (<span class='nCmnts${items[i]}'></span>)</h3>
                 <div class="comments-container${items[i]}">
                     <article class="comment"></article>
                 </div>
@@ -86,23 +87,23 @@ for (let i = 0; i < items.length; i += 1) {
     submitBtns[i] = document.querySelector(`#submitComment${items[i]}`);
     inputUsers[i] = document.querySelector(`#username${items[i]}`);
     inputComments[i] = document.querySelector(`#commentpop${items[i]}`);
+    nComments[i] = document.querySelector(`.nCmnts${items[i]}`);
     popups[i] = document.querySelector(`.popup${items[i]}`);
     commentBtns[i].addEventListener('click', () => {
       popups[i].classList.remove('hide');
       xBtns[i].addEventListener('click', () => {
         popups[i].classList.add('hide');
       });
-      //
       getComments(items[i]).then((comments) => {
+        nComments[i].textContent = countItems(comments);
         for (let j = 0; j < comments.length; j += 1) {
           const commentPop = comments[j];
           const cmnt = document.createElement('article');
           cmnt.classList.add('comment');
-          cmnt.innerHTML = `${commentPop.creationDate}, ${commentPop.username}: ${commentPop.comment}`;
+          cmnt.innerHTML = `${commentPop.creation_date}, ${commentPop.username}: ${commentPop.comment}`;
           commentsContainers[i].appendChild(cmnt);
         }
       });
-      //
       submitBtns[i].addEventListener('click', (e) => {
         e.preventDefault();
         createComment(items[i], inputUsers[i].value, inputComments[i].value).then((comment) => {
