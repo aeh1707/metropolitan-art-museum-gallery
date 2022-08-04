@@ -33,7 +33,7 @@ run `npm run start`.
 
 ## Live Demo
 
-[Live Demo Link](https://aeh1707.github.io/microverse-capstone-module-2/)
+[Live Demo Link](https://aeh1707.github.io/metropolitan-art-museum-gallery/)
 
 ## Authors
 
