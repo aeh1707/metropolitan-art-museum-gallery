@@ -2,7 +2,7 @@
 
 # Art Musuem App
 
-> A musuem art gallery build using HTML, CSS, JS, webpack and also by using The Metropolitan Museum of Art Open Access API.
+> A museum art gallery was built using HTML, CSS, JS, Webpack, and also by using The Metropolitan Museum of Art Open Access API.
 
 ## Getting Started
 
